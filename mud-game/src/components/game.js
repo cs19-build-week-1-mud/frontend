@@ -20,7 +20,8 @@ class Game extends React.Component {
 
     const headers = {
       headers: {
-        Authorization: token
+        "Authorization": token,
+        "Content-Type": "application/json"
       }
     };
 
