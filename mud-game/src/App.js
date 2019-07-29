@@ -27,10 +27,12 @@ class App extends React.Component {
           </Link>
         ) : (
           <div>
+            <h1>Register or Login To Enter</h1>
             <Link to="/register">
               {" "}
-              <button>Register</button>{" "}
+              <button>Register</button>
             </Link>
+
             <Link to="/login">
               <button>Login</button>
             </Link>

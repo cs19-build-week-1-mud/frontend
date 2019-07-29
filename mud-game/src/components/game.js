@@ -46,7 +46,7 @@ class Game extends React.Component {
       <div>
         <h2>The Game</h2>
         <div>
-            {/* PLAYER DETAILS */}
+          {/* PLAYER DETAILS */}
           <h3>Player Details:</h3>
           <p>Username: {this.state.name}</p>
 
