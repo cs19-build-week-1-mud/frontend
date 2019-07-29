@@ -34,6 +34,13 @@ class Register extends React.Component {
           console.error("Sign In Error", err);
         });
 
+        this.setState({
+            username: "",
+            email: "",
+            password1: "",
+            password2: ""
+        })
+
     }
 
 

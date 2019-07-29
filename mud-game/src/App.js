@@ -14,26 +14,28 @@ class App extends React.Component {
     baseUrl: "https://lambda-mud-test.herokuapp.com/api/"
   };
 
-logout = e => {
+  logout = e => {
     localStorage.clear();
   };
-
 
   render() {
     return (
       <div className="App">
-        <header>
-          <h1>Red Jaguars MUD </h1>
-        </header>
-        <Link to="/register">
-          <button>Register</button>
-        </Link>
-        <Link to="/login">
-          <button>Login</button>
-        </Link>
-        <Link to="/">
-          <button onClick={this.logout}>Logout</button>
-        </Link>
+        {localStorage.getItem("key") ? (
+          <Link to="/">
+            <button onClick={this.logout}>Logout</button>
+          </Link>
+        ) : (
+          <div>
+            <Link to="/register">
+              {" "}
+              <button>Register</button>{" "}
+            </Link>
+            <Link to="/login">
+              <button>Login</button>
+            </Link>
+          </div>
+        )}
 
         <Route
           path="/register"
@@ -51,6 +53,5 @@ logout = e => {
     );
   }
 }
-
 
 export default withRouter(App);
