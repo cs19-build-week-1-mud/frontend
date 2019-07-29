@@ -23,7 +23,7 @@ logout = e => {
     return (
       <div>
         <header>
-          <h1>MUD Game</h1>
+          <h1>Red Jaguars MUD </h1>
         </header>
         <Link to="/register">
           <button>Register</button>
