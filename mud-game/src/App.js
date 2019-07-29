@@ -1,26 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// Packages
+import React from "react";
+import { Route, Link, withRouter } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// Components + CSS
+import Register from "./components/register";
+import Login from "./components/login";
+import Game from "./components/game";
+
+import "./App.css";
+
+class App extends React.Component {
+  state = {
+    baseUrl: "https://lambda-mud-test.herokuapp.com/api/"
+  };
+
+logout = e => {
+    localStorage.clear();
+  };
+
+
+  render() {
+    return (
+      <div>
+        <header>
+          <h1>MUD Game</h1>
+        </header>
+        <Link to="/register">
+          <button>Register</button>
+        </Link>
+        <Link to="/login">
+          <button>Login</button>
+        </Link>
+        <Link to="/">
+          <button onClick={this.logout}>Logout</button>
+        </Link>
+
+        <Route
+          path="/register"
+          render={props => <Register {...props} baseUrl={this.state.baseUrl} />}
+        />
+        <Route
+          path="/login"
+          render={props => <Login {...props} baseUrl={this.state.baseUrl} />}
+        />
+        <Route
+          path="/game"
+          render={props => <Game {...props} baseUrl={this.state.baseUrl} />}
+        />
+      </div>
+    );
+  }
 }
 
-export default App;
+
+export default withRouter(App);
