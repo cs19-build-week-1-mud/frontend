@@ -1,6 +1,8 @@
 // Packages
 import React from 'react';
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 
 class Register extends React.Component {
     constructor(){
@@ -71,6 +73,7 @@ class Register extends React.Component {
 
                     {this.state.password2.length && this.state.password1 === this.state.password2 ? <button onClick={this.submit}> Register </button> : <p>Passwords must match to create an account.</p>}
                 </form>
+                <Link to="/login"><p>I already have an account</p></Link>
             </div>
         )
     }
