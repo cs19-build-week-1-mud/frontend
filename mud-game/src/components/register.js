@@ -71,7 +71,7 @@ class Register extends React.Component {
                     placeholder="re-type password"
                     />
 
-                    {this.state.password2.length && this.state.password1 === this.state.password2 ? <button onClick={this.submit}> Register </button> : <p>Passwords must match to create an account.</p>}
+                    {this.state.password2.length >= 8 && this.state.password1 === this.state.password2 ? <button onClick={this.submit}> Register </button> : <p>Entered passwords must match and be at least 8 characters long to create an account.</p>}
                 </form>
                 <Link to="/login"><p>I already have an account</p></Link>
             </div>
