@@ -43,11 +43,19 @@ class Game extends React.Component {
       });
   }
 
+  // ===========  Player Text Input
   handleChanges = e => {
     const { id, value } = e.target;
     this.setState({ [id]: value });
   };
 
+  submit = e => {
+    e.preventDefault();
+    this.postDirection();
+    this.setState({ move: "" });
+  };
+
+  // ===========  Player Navigation Buttons
   playerMove = e => {
     e.preventDefault();
 
@@ -55,17 +63,23 @@ class Game extends React.Component {
     const { id } = e.target;
 
     // set this.state.move to button id
-    this.setState({ move: id });
-
-    // invoke POST request
-    this.postDirection()
+    // then invoke post request using cb arg
+    this.setState({ move: id }, () => {
+      this.postDirection();
+    });
 
     console.log("Move on state: ", this.state.move);
   };
 
-  // POST REQUEST FOR PLAYER MOVE
-  postDirection = () => {
+  // ===========  POST Request For Player Move + Req Configuration
 
+  /*
+  may have to make axios call to specific endpoint conditional based on if 
+  player entered a direction command or a different type of command:
+  (if n/e/s/w, post to /move endpoint, otherwise, post to /say endpoint) 
+  */
+
+  postDirection = () => {
     // create direction var that sets direction arg to this.state.move
     const direction = {
       direction: this.state.move
@@ -99,25 +113,6 @@ class Game extends React.Component {
         console.log("Whoops! ", err);
       });
   };
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.uuid !== this.props.uuid) {
-      this.setState({ uuid: this.props.uuid });
-    }
-
-    if (prevProps.title !== this.props.title) {
-      this.setState({ title: this.props.title });
-    }
-
-    if (prevProps.description !== this.props.description) {
-      this.setState({ description: this.props.description });
-    }
-
-    if (prevProps.players !== this.props.players) {
-      this.setState({ players: this.props.players });
-    }
-
-  }
 
   render() {
     return (
@@ -159,13 +154,15 @@ class Game extends React.Component {
           </button>
         </div>
 
-        <input
-          id="move"
-          type="text"
-          value={this.state.move}
-          onChange={this.handleChanges}
-          placeholder="what do you wanna do"
-        />
+        <form onSubmit={this.submit}>
+          <input
+            id="move"
+            type="text"
+            value={this.state.move}
+            onChange={this.handleChanges}
+            placeholder="what do you wanna do"
+          />
+        </form>
       </div>
     );
   }
