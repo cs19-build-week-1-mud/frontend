@@ -3,6 +3,7 @@ import React from "react";
 import { Route, Link, withRouter } from "react-router-dom";
 
 // Components + CSS
+import Welcome from "./components/welcome";
 import Register from "./components/register";
 import Login from "./components/login";
 import Game from "./components/game";
@@ -25,20 +26,12 @@ class App extends React.Component {
           <Link to="/">
             <button onClick={this.logout}>Logout</button>
           </Link>
-        ) : (
-          <div>
-            <h1>Register or Login To Enter</h1>
-            <Link to="/register">
-              {" "}
-              <button>Register</button>
-            </Link>
+        ) : null}
 
-            <Link to="/login">
-              <button>Login</button>
-            </Link>
-          </div>
-        )}
-
+        <Route 
+          exact path="/" 
+          render={props => <Welcome {...props} />} 
+        />
         <Route
           path="/register"
           render={props => <Register {...props} baseUrl={this.state.baseUrl} />}

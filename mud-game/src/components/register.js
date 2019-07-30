@@ -88,6 +88,9 @@ class Register extends React.Component {
         <Link to="/login">
           <p>I already have an account</p>
         </Link>
+        <Link to="/">
+          <p>Back to Home</p>
+        </Link>
       </div>
     );
   }

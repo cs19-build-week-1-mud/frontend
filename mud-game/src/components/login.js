@@ -61,8 +61,12 @@ class Login extends React.Component {
             <button onClick={this.submit}> Login </button>
           ) : null}
         </form>
+        
         <Link to="/register">
           <p>I don't have an account yet</p>
+        </Link>
+        <Link to="/">
+          <p>Back to Home</p>
         </Link>
       </div>
     );

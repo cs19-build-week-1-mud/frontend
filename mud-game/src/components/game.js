@@ -97,7 +97,7 @@ class Game extends React.Component {
     return (
       <div>
         <h2>The Game</h2>
-        <div>
+
           {/* ROOM DETAILS */}
 
           <h3>Room Details:</h3>
@@ -113,7 +113,7 @@ class Game extends React.Component {
             </div>
           ))}
 
-          {/* PLAYER DETAILS */}
+          {/* PLAYER DETAILS + INPUT */}
           <h3>Player Details:</h3>
           <p>Username: {this.state.name}</p>
           <p>You Entered: {this.state.move}</p>
@@ -140,7 +140,6 @@ class Game extends React.Component {
             onChange={this.handleChanges}
             placeholder="what do you wanna do"
           />
-        </div>
       </div>
     );
   }
