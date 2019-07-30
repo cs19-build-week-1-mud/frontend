@@ -57,12 +57,19 @@ class Game extends React.Component {
     // set this.state.move to button id
     this.setState({ move: id });
 
-    console.log("Move on state: ", this.state.move.toString());
+    // invoke POST request
+    this.postDirection()
+
+    console.log("Move on state: ", this.state.move);
+  };
+
+  // POST REQUEST FOR PLAYER MOVE
+  postDirection = () => {
 
     // create direction var that sets direction arg to this.state.move
     const direction = {
       direction: this.state.move
-      //   direction: id // this way updates automatically
+      //direction: id // this way updates automatically
     };
 
     // create token var, authorization, and content-type header arg
@@ -93,53 +100,72 @@ class Game extends React.Component {
       });
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.uuid !== this.props.uuid) {
+      this.setState({ uuid: this.props.uuid });
+    }
+
+    if (prevProps.title !== this.props.title) {
+      this.setState({ title: this.props.title });
+    }
+
+    if (prevProps.description !== this.props.description) {
+      this.setState({ description: this.props.description });
+    }
+
+    if (prevProps.players !== this.props.players) {
+      this.setState({ players: this.props.players });
+    }
+
+  }
+
   render() {
     return (
       <div>
         <h2>The Game</h2>
 
-          {/* ROOM DETAILS */}
+        {/* ROOM DETAILS */}
 
-          <h3>Room Details:</h3>
-          <p>Room Title: {this.state.title}</p>
-          <p>Description: {this.state.description}</p>
+        <h3>Room Details:</h3>
+        <p>Room Title: {this.state.title}</p>
+        <p>Description: {this.state.description}</p>
 
-          {/* PLAYERS IN THIS ROOM */}
+        {/* PLAYERS IN THIS ROOM */}
 
-          <h3>Players In This Room:</h3>
-          {this.state.players.map(player => (
-            <div key={player}>
-              <p>{player}</p>
-            </div>
-          ))}
-
-          {/* PLAYER DETAILS + INPUT */}
-          <h3>Player Details:</h3>
-          <p>Username: {this.state.name}</p>
-          <p>You Entered: {this.state.move}</p>
-
-          <div className="direction-buttons">
-            <button id="n" onClick={this.playerMove}>
-              N
-            </button>
-            <button id="e" onClick={this.playerMove}>
-              E
-            </button>
-            <button id="s" onClick={this.playerMove}>
-              S
-            </button>
-            <button id="w" onClick={this.playerMove}>
-              W
-            </button>
+        <h3>Players In This Room:</h3>
+        {this.state.players.map(player => (
+          <div key={player}>
+            <p>{player}</p>
           </div>
+        ))}
 
-          <input
-            id="move"
-            type="text"
-            value={this.state.move}
-            onChange={this.handleChanges}
-            placeholder="what do you wanna do"
-          />
+        {/* PLAYER DETAILS + INPUT */}
+        <h3>Player Details:</h3>
+        <p>Username: {this.state.name}</p>
+        <p>You Entered: {this.state.move}</p>
+
+        <div className="direction-buttons">
+          <button id="n" onClick={this.playerMove}>
+            N
+          </button>
+          <button id="e" onClick={this.playerMove}>
+            E
+          </button>
+          <button id="s" onClick={this.playerMove}>
+            S
+          </button>
+          <button id="w" onClick={this.playerMove}>
+            W
+          </button>
+        </div>
+
+        <input
+          id="move"
+          type="text"
+          value={this.state.move}
+          onChange={this.handleChanges}
+          placeholder="what do you wanna do"
+        />
       </div>
     );
   }
