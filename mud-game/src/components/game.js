@@ -4,6 +4,7 @@ import axios from "axios";
 
 // Components
 import NavBar from "./NavBar";
+import Map from "./Map";
 import PlayerInput from "./PlayerInput";
 
 class Game extends React.Component {
@@ -127,8 +128,7 @@ class Game extends React.Component {
         <NavBar 
         name={this.state.name}
         logout={this.logout}/>
-
-        <h2>The Game</h2>
+        <Map/>
 
         {/* ROOM DETAILS */}
 

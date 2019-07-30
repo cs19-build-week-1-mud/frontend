@@ -2,12 +2,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Welcome = props => {
+const Home = props => {
   return (
     <div>
       <h1>Welcome!</h1>
-      <h2>Register or Login To Enter</h2>
+      <p>Read this cool information about this ever-so-cool game.</p>
 
+      <h2>Register or Login To Enter</h2>
       <div>
         <Link to="/register">
           <button>Register</button>
@@ -21,4 +22,4 @@ const Welcome = props => {
   );
 };
 
-export default Welcome;
+export default Home;

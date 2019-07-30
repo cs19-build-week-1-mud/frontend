@@ -3,7 +3,7 @@ import React from "react";
 import { Route, Link, withRouter } from "react-router-dom";
 
 // Components + CSS
-import Welcome from "./components/Welcome";
+import Welcome from "./components/Home";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Game from "./components/Game";
