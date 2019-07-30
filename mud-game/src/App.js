@@ -3,10 +3,10 @@ import React from "react";
 import { Route, Link, withRouter } from "react-router-dom";
 
 // Components + CSS
-import Welcome from "./components/welcome";
-import Register from "./components/register";
-import Login from "./components/login";
-import Game from "./components/game";
+import Welcome from "./components/Welcome";
+import Register from "./components/Register";
+import Login from "./components/Login";
+import Game from "./components/Game";
 
 import "./App.css";
 
@@ -15,19 +15,10 @@ class App extends React.Component {
     baseUrl: "https://lambda-mud-test.herokuapp.com/api/"
   };
 
-  logout = e => {
-    localStorage.clear();
-  };
 
   render() {
     return (
       <div className="App">
-        {localStorage.getItem("key") ? (
-          <Link to="/">
-            <button onClick={this.logout}>Logout</button>
-          </Link>
-        ) : null}
-
         <Route 
           exact path="/" 
           render={props => <Welcome {...props} />} 

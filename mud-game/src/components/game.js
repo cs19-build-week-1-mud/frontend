@@ -2,6 +2,10 @@
 import React from "react";
 import axios from "axios";
 
+// Components
+import NavBar from "./NavBar";
+import PlayerInput from "./PlayerInput";
+
 class Game extends React.Component {
   constructor() {
     super();
@@ -43,6 +47,7 @@ class Game extends React.Component {
       });
   }
 
+
   // ===========  Player Text Input
   handleChanges = e => {
     const { id, value } = e.target;
@@ -62,8 +67,7 @@ class Game extends React.Component {
     // get button's id
     const { id } = e.target;
 
-    // set this.state.move to button id
-    // then invoke post request using cb arg
+    // set this.state.move to button id THEN invoke post request
     this.setState({ move: id }, () => {
       this.postDirection();
     });
@@ -72,6 +76,10 @@ class Game extends React.Component {
   };
 
   // ===========  POST Request For Player Move + Req Configuration
+  // create direction var that sets direction arg to this.state.move
+  // create token var, authorization, and content-type header arg
+  // POST request passing in endpoint, direction, and headers
+
 
   /*
   may have to make axios call to specific endpoint conditional based on if 
@@ -80,13 +88,12 @@ class Game extends React.Component {
   */
 
   postDirection = () => {
-    // create direction var that sets direction arg to this.state.move
+
     const direction = {
       direction: this.state.move
       //direction: id // this way updates automatically
     };
 
-    // create token var, authorization, and content-type header arg
     const token = "Token " + localStorage.getItem("key");
     const headers = {
       headers: {
@@ -95,7 +102,6 @@ class Game extends React.Component {
       }
     };
 
-    // axios call
     const endpoint = this.props.baseUrl + "adv/move/";
     axios
       .post(endpoint, direction, headers)
@@ -106,7 +112,8 @@ class Game extends React.Component {
           name: res.data.name,
           title: res.data.title,
           description: res.data.description,
-          players: res.data.players
+          players: res.data.players,
+          move: ""
         });
       })
       .catch(err => {
@@ -117,6 +124,10 @@ class Game extends React.Component {
   render() {
     return (
       <div>
+        <NavBar 
+        name={this.state.name}
+        logout={this.logout}/>
+
         <h2>The Game</h2>
 
         {/* ROOM DETAILS */}
@@ -127,7 +138,7 @@ class Game extends React.Component {
 
         {/* PLAYERS IN THIS ROOM */}
 
-        <h3>Players In This Room:</h3>
+        <h3>Players ({this.state.players.length}):</h3>
         {this.state.players.map(player => (
           <div key={player}>
             <p>{player}</p>
@@ -139,7 +150,7 @@ class Game extends React.Component {
         <p>Username: {this.state.name}</p>
         <p>You Entered: {this.state.move}</p>
 
-        <div className="direction-buttons">
+        {/* <div className="direction-buttons">
           <button id="n" onClick={this.playerMove}>
             N
           </button>
@@ -162,7 +173,14 @@ class Game extends React.Component {
             onChange={this.handleChanges}
             placeholder="what do you wanna do"
           />
-        </form>
+        </form> */}
+
+        <PlayerInput 
+          playerMove={this.playerMove}
+          submit={this.submit}
+          move={this.state.move}
+          handleChanges={this.handleChanges}
+        />
       </div>
     );
   }
