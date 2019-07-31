@@ -6,6 +6,11 @@ class RoomDetails extends React.Component {
     username: ""
   };
 
+  // centerText = {
+  //   textAlign: 'center',
+  // };
+  // use: style={this.centerText}
+
   showName = (e, name) => {
     e.preventDefault();
     this.setState({ username: name });
