@@ -4,7 +4,7 @@ import React from "react";
 const PlayerInput = props => {
   return (
     <div className="player-input-container">
-      <form onSubmit={props.submit}>
+      <form onSubmit={props.submit} className="player-input-form">
         <input
           id="move"
           type="text"

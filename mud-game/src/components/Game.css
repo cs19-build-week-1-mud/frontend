@@ -112,14 +112,14 @@ i:active {
 }
 
 /* Form, Input */
-form {
+.player-input-form {
   width: 40%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 
-form input {
+.player-input-form input {
   width: 70%;
   height: 30px;
   padding-left: 10px;
