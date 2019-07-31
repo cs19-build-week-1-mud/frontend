@@ -136,11 +136,6 @@ class Game extends React.Component {
           />
         </div>
 
-        {/* PLAYER DETAILS + INPUT */}
-        {/* <h3>Player Details:</h3>
-        <p>Username: {this.state.name}</p>
-        <p>You Entered: {this.state.move}</p> */}
-
         <PlayerInput
           playerMove={this.playerMove}
           submit={this.submit}

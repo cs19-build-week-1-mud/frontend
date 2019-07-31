@@ -2,9 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
 const NavBar = props => {
-
   const logout = e => {
     localStorage.clear();
   };
@@ -12,7 +10,7 @@ const NavBar = props => {
   return (
     <nav className="navbar-container">
       <p className="current-user">Welcome, {props.name}!</p>
-      <p>Red Jaguars Lambda MUD</p>
+      <p><strong>Red Jaguars Lambda MUD</strong></p>
 
       <Link to="/">
         <button onClick={logout}>Logout</button>

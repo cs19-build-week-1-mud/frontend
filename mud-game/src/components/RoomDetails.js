@@ -12,31 +12,38 @@ class RoomDetails extends React.Component {
   };
 
   clearName = e => {
-      this.setState({ username: "" })
-  }
+    this.setState({ username: "" });
+  };
 
   render() {
     return (
       <div className="room-details-container">
         <h3>Room Details:</h3>
-        <p>Room Title: {this.props.title}</p>
-        <p>Description: {this.props.description}</p>
+        <p>
+          <strong>Title:</strong> {this.props.title}
+        </p>
+        <p>
+          <strong>Description:</strong> {this.props.description}
+        </p>
 
         <h3>Players In This Room ({this.props.players.length}):</h3>
-        
+
         <div className="players-container">
           {this.props.players.map(player => (
             <div key={player}>
               {/* <p>{player}</p> */}
-              <i class="fas fa-male" onMouseOver={e => this.showName(e, player)} onMouseLeave={this.clearName} />
+              <i
+                class="fas fa-male"
+                onMouseOver={e => this.showName(e, player)}
+                onMouseLeave={this.clearName}
+              />
             </div>
           ))}
-          
         </div>
-        {this.state.username !== "" ? (
-            <p>Player: {this.state.username}</p>
-        ) : null }
         
+        {this.state.username !== "" ? (
+          <p>Player: {this.state.username}</p>
+        ) : null}
       </div>
     );
   }
