@@ -41,7 +41,7 @@ button:hover {
   width: 65%;
 }
 
-.map-container img {
+.map-container .map {
   width: 100%;
 }
 
@@ -80,7 +80,7 @@ i:active {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: baseline;
 }
 
 /* Direction Buttons */
@@ -117,6 +117,7 @@ i:active {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  align-items: flex-start;
 }
 
 .player-input-form input {
