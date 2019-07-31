@@ -1,6 +1,6 @@
 // Packages
 import React from "react";
-import { Route, Link, withRouter } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 
 // Components + CSS
 import Welcome from "./components/Home";

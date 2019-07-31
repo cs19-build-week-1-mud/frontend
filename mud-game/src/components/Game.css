@@ -1,0 +1,135 @@
+.game-container {
+    border: 2px solid red;
+    padding-bottom: 50px;
+    display: block;
+}
+
+.center-section {
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    border-radius: 5px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+/* Nav Bar */
+.navbar-container {
+    width: auto;
+    height: 40 px;
+    background: navy;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+.navbar-container button {
+    height: 30px;
+    width: 80px;
+    font-size: 14px;
+}
+
+/* Map */
+.map-container {
+    width: 65%;
+    border: 2px solid green;
+
+}
+
+.map-container img {
+    width: 100%;
+}
+
+/* Room Details */
+.room-details-container {
+    width: 35%;
+    border: 2px solid purple;
+
+}
+
+.players-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+i {
+    font-size: 40px;
+    margin: 0 5px;
+}
+
+i:hover {
+    transform: scale(1.1);
+    color: orange;
+    cursor: pointer;
+}
+
+i:active {
+    color: pink
+}
+
+/* Player Input */
+.player-input-container {
+    width: 100%;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.direction-buttons {
+    width: 30%;
+    height: 32px;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.direction-buttons button {
+    font-size: 20px;
+    width: 50px;
+    background-color: black;
+    color: white;
+}
+
+.direction-buttons button:hover {
+    transform: scale(1.1);
+    color: orange;
+    cursor: pointer;
+}
+
+form {
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+form input {
+    width: 70%;
+    height: 30px;
+    padding-left: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    /* box-shadow: 2px 3px 2px lightgray; */
+}
+
+input:focus {
+    outline: none;
+}
+
+form button {
+    height: 33px;
+    width: 80px;
+    font-size: 14px;
+}

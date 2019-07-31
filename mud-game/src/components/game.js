@@ -5,7 +5,9 @@ import axios from "axios";
 // Components
 import NavBar from "./NavBar";
 import Map from "./Map";
+import RoomDetails from "./RoomDetails";
 import PlayerInput from "./PlayerInput";
+import "./Game.css";
 
 class Game extends React.Component {
   constructor() {
@@ -48,7 +50,6 @@ class Game extends React.Component {
       });
   }
 
-
   // ===========  Player Text Input
   handleChanges = e => {
     const { id, value } = e.target;
@@ -81,7 +82,6 @@ class Game extends React.Component {
   // create token var, authorization, and content-type header arg
   // POST request passing in endpoint, direction, and headers
 
-
   /*
   may have to make axios call to specific endpoint conditional based on if 
   player entered a direction command or a different type of command:
@@ -89,7 +89,6 @@ class Game extends React.Component {
   */
 
   postDirection = () => {
-
     const direction = {
       direction: this.state.move
       //direction: id // this way updates automatically
@@ -124,58 +123,25 @@ class Game extends React.Component {
 
   render() {
     return (
-      <div>
-        <NavBar 
-        name={this.state.name}
-        logout={this.logout}/>
-        <Map/>
+      <div className="game-container">
+        <NavBar name={this.state.name} />
 
-        {/* ROOM DETAILS */}
+        <div className="center-section">
+          <Map />
 
-        <h3>Room Details:</h3>
-        <p>Room Title: {this.state.title}</p>
-        <p>Description: {this.state.description}</p>
-
-        {/* PLAYERS IN THIS ROOM */}
-
-        <h3>Players ({this.state.players.length}):</h3>
-        {this.state.players.map(player => (
-          <div key={player}>
-            <p>{player}</p>
-          </div>
-        ))}
-
-        {/* PLAYER DETAILS + INPUT */}
-        <h3>Player Details:</h3>
-        <p>Username: {this.state.name}</p>
-        <p>You Entered: {this.state.move}</p>
-
-        {/* <div className="direction-buttons">
-          <button id="n" onClick={this.playerMove}>
-            N
-          </button>
-          <button id="e" onClick={this.playerMove}>
-            E
-          </button>
-          <button id="s" onClick={this.playerMove}>
-            S
-          </button>
-          <button id="w" onClick={this.playerMove}>
-            W
-          </button>
+          <RoomDetails
+            title={this.state.title}
+            description={this.state.description}
+            players={this.state.players}
+          />
         </div>
 
-        <form onSubmit={this.submit}>
-          <input
-            id="move"
-            type="text"
-            value={this.state.move}
-            onChange={this.handleChanges}
-            placeholder="what do you wanna do"
-          />
-        </form> */}
+        {/* PLAYER DETAILS + INPUT */}
+        {/* <h3>Player Details:</h3>
+        <p>Username: {this.state.name}</p>
+        <p>You Entered: {this.state.move}</p> */}
 
-        <PlayerInput 
+        <PlayerInput
           playerMove={this.playerMove}
           submit={this.submit}
           move={this.state.move}

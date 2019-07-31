@@ -2,6 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 const NavBar = props => {
 
   const logout = e => {
@@ -9,8 +10,8 @@ const NavBar = props => {
   };
 
   return (
-    <nav>
-      <p className="current-user">Welcome {props.name}</p>
+    <nav className="navbar-container">
+      <p className="current-user">Welcome, {props.name}!</p>
       <p>Red Jaguars Lambda MUD</p>
 
       <Link to="/">
