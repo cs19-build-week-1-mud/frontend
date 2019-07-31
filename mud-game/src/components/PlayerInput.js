@@ -10,7 +10,7 @@ const PlayerInput = props => {
           type="text"
           value={props.move}
           onChange={props.handleChanges}
-          placeholder="what do you wanna do"
+          placeholder="What do you wanna do?"
         />
         <button onClick={props.submit}>Submit</button>
       </form>
