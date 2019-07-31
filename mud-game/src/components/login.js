@@ -3,6 +3,8 @@ import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+import "./Auth.css"
+
 class Login extends React.Component {
   constructor() {
     super();
@@ -39,35 +41,37 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Login</h2>
-        <form onSubmit={this.submit}>
-          <input
-            id="username"
-            type="text"
-            value={this.state.username}
-            onChange={this.handleChanges}
-            placeholder="username"
-          />
-          <input
-            id="password"
-            type="password"
-            value={this.state.password}
-            onChange={this.handleChanges}
-            placeholder="password"
-          />
+      <div className="auth-container">
+        <div className="auth-content">
+          <h1>Login</h1>
+          <form onSubmit={this.submit}>
+            <input
+              id="username"
+              type="text"
+              value={this.state.username}
+              onChange={this.handleChanges}
+              placeholder="username"
+            />
+            <input
+              id="password"
+              type="password"
+              value={this.state.password}
+              onChange={this.handleChanges}
+              placeholder="password"
+            />
 
-          {this.state.username && this.state.password ? (
-            <button onClick={this.submit}> Login </button>
-          ) : null}
-        </form>
-        
-        <Link to="/register">
-          <p>I don't have an account yet</p>
-        </Link>
-        <Link to="/">
-          <p>Back to Home</p>
-        </Link>
+            {this.state.username && this.state.password ? (
+              <button onClick={this.submit}> Login </button>
+            ) : null}
+          </form>
+
+          <Link to="/register">
+            <p>I don't have an account yet</p>
+          </Link>
+          <Link to="/">
+            <p>Back to Home</p>
+          </Link>
+        </div>
       </div>
     );
   }

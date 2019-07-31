@@ -2,6 +2,13 @@
 import React from "react";
 import axios from "axios";
 
+// Components
+import NavBar from "./NavBar";
+import Map from "./Map";
+import RoomDetails from "./RoomDetails";
+import PlayerInput from "./PlayerInput";
+import "./Game.css";
+
 class Game extends React.Component {
   constructor() {
     super();
@@ -62,8 +69,7 @@ class Game extends React.Component {
     // get button's id
     const { id } = e.target;
 
-    // set this.state.move to button id
-    // then invoke post request using cb arg
+    // set this.state.move to button id THEN invoke post request
     this.setState({ move: id }, () => {
       this.postDirection();
     });
@@ -72,6 +78,9 @@ class Game extends React.Component {
   };
 
   // ===========  POST Request For Player Move + Req Configuration
+  // create direction var that sets direction arg to this.state.move
+  // create token var, authorization, and content-type header arg
+  // POST request passing in endpoint, direction, and headers
 
   /*
   may have to make axios call to specific endpoint conditional based on if 
@@ -80,13 +89,11 @@ class Game extends React.Component {
   */
 
   postDirection = () => {
-    // create direction var that sets direction arg to this.state.move
     const direction = {
       direction: this.state.move
       //direction: id // this way updates automatically
     };
 
-    // create token var, authorization, and content-type header arg
     const token = "Token " + localStorage.getItem("key");
     const headers = {
       headers: {
@@ -95,7 +102,6 @@ class Game extends React.Component {
       }
     };
 
-    // axios call
     const endpoint = this.props.baseUrl + "adv/move/";
     axios
       .post(endpoint, direction, headers)
@@ -106,7 +112,8 @@ class Game extends React.Component {
           name: res.data.name,
           title: res.data.title,
           description: res.data.description,
-          players: res.data.players
+          players: res.data.players,
+          move: ""
         });
       })
       .catch(err => {
@@ -116,53 +123,25 @@ class Game extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>The Game</h2>
+      <div className="game-container">
+        <NavBar name={this.state.name} />
 
-        {/* ROOM DETAILS */}
+        <div className="center-section">
+          <Map />
 
-        <h3>Room Details:</h3>
-        <p>Room Title: {this.state.title}</p>
-        <p>Description: {this.state.description}</p>
-
-        {/* PLAYERS IN THIS ROOM */}
-
-        <h3>Players In This Room:</h3>
-        {this.state.players.map(player => (
-          <div key={player}>
-            <p>{player}</p>
-          </div>
-        ))}
-
-        {/* PLAYER DETAILS + INPUT */}
-        <h3>Player Details:</h3>
-        <p>Username: {this.state.name}</p>
-        <p>You Entered: {this.state.move}</p>
-
-        <div className="direction-buttons">
-          <button id="n" onClick={this.playerMove}>
-            N
-          </button>
-          <button id="e" onClick={this.playerMove}>
-            E
-          </button>
-          <button id="s" onClick={this.playerMove}>
-            S
-          </button>
-          <button id="w" onClick={this.playerMove}>
-            W
-          </button>
+          <RoomDetails
+            title={this.state.title}
+            description={this.state.description}
+            players={this.state.players}
+          />
         </div>
 
-        <form onSubmit={this.submit}>
-          <input
-            id="move"
-            type="text"
-            value={this.state.move}
-            onChange={this.handleChanges}
-            placeholder="what do you wanna do"
-          />
-        </form>
+        <PlayerInput
+          playerMove={this.playerMove}
+          submit={this.submit}
+          move={this.state.move}
+          handleChanges={this.handleChanges}
+        />
       </div>
     );
   }

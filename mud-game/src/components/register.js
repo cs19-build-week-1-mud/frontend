@@ -3,6 +3,8 @@ import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+import "./Auth.css"
+
 class Register extends React.Component {
   constructor() {
     super();
@@ -43,8 +45,9 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Register</h2>
+      <div className="auth-container">
+        <div className="auth-content">
+        <h1>Register</h1>
         <form onSubmit={this.submit}>
           <input
             id="username"
@@ -80,7 +83,7 @@ class Register extends React.Component {
             <button onClick={this.submit}> Register </button>
           ) : (
             <p>
-              Entered passwords must match and be at least 8 characters long to
+              Entered passwords must match and be at least <br></br> 8 characters long to
               create an account.
             </p>
           )}
@@ -91,6 +94,8 @@ class Register extends React.Component {
         <Link to="/">
           <p>Back to Home</p>
         </Link>
+        </div>
+        
       </div>
     );
   }
