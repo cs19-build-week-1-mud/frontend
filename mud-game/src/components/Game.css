@@ -1,5 +1,5 @@
 .game-container {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     padding-bottom: 50px;
     display: block;
 }
@@ -38,7 +38,7 @@ button:hover {
 /* Map */
 .map-container {
     width: 65%;
-    border: 2px solid green;
+    /* border: 2px solid green; */
 
 }
 
@@ -49,7 +49,7 @@ button:hover {
 /* Room Details */
 .room-details-container {
     width: 35%;
-    border: 2px solid purple;
+    /* border: 2px solid purple; */
 
 }
 
@@ -75,7 +75,7 @@ i:active {
     color: pink
 }
 
-/* Player Input */
+/* ============ Player Input =========== */
 .player-input-container {
     width: 100%;
     padding-top: 20px;
@@ -85,6 +85,7 @@ i:active {
     align-items: center;
 }
 
+/* Direction Buttons */
 .direction-buttons {
     width: 30%;
     height: 32px;
@@ -107,6 +108,11 @@ i:active {
     cursor: pointer;
 }
 
+.direction-buttons button:focus {
+    outline: none;
+}
+
+/* Form, Input */
 form {
     width: 40%;
     display: flex;
@@ -132,4 +138,8 @@ form button {
     height: 33px;
     width: 80px;
     font-size: 14px;
+}
+
+form button:hover {
+    transform: scale(1.1);
 }

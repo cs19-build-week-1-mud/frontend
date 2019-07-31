@@ -11,6 +11,10 @@ class RoomDetails extends React.Component {
     this.setState({ username: name });
   };
 
+  clearName = e => {
+      this.setState({ username: "" })
+  }
+
   render() {
     return (
       <div className="room-details-container">
@@ -24,7 +28,7 @@ class RoomDetails extends React.Component {
           {this.props.players.map(player => (
             <div key={player}>
               {/* <p>{player}</p> */}
-              <i class="fas fa-male" onClick={e => this.showName(e, player)} />
+              <i class="fas fa-male" onMouseOver={e => this.showName(e, player)} onMouseLeave={this.clearName} />
             </div>
           ))}
           
