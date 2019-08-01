@@ -2,14 +2,22 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    /* justify-content: center; */
-    /* border: 1px solid red; */
+    background-color: black;
+    color: white;
+
+}
+
+.dashed-line {
+  width: 100%;
+  margin-top: 5px;
+  border-top: 30px dashed yellow;
+
 }
 
 .home-text {
-    margin: 5% auto 0;
+    margin: 2% auto 0;
     width: 60%;
+    font-size: 18px;
 }
 
 button {
@@ -18,8 +26,58 @@ button {
   font-size: 16px;
   margin: 0 15px;
   box-shadow: 2px 3px 2px lightgray;
+  background-color: yellow;
 }
 
 button:hover {
   transform: scale(1.1);
+}
+
+.cars-top {
+  height: 10px;
+  margin: 20px 0 0;
+  text-align: left;
+  font-size: 50px;
+  animation: slideOutRight 9s ease-in-out infinite;
+  /* animation: slideOutRight 3s ease-in-out 1s infinite alternate; */
+}
+
+.cars-bottom{
+  height: 10px;
+  text-align: right;
+  font-size: 60px;
+  animation: slideOutLeft 5s ease-in-out infinite;
+  color: darkred;
+
+}
+
+.car1 {
+  color: navy;
+}
+
+.car2 {
+  color: yellow;
+  margin-left: 300px;;
+}
+
+.car3 {
+  color: blue;
+  margin-left: 500px;;
+}
+
+.car4 {
+  color: darkred;
+  transform: scaleX(-1);
+  margin-right: 300px;
+}
+
+.car5 {
+  color: green;
+  transform: scaleX(-1);
+  margin-right: 700px;
+}
+
+.car6 {
+  color: red;
+  transform: scaleX(-1);
 }
