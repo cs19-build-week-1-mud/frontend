@@ -159,8 +159,7 @@ class Game extends React.Component {
         <NavBar name={this.state.name} />
 
         <div className="center-section">
-          {/* <Map baseUrl={this.props.baseUrl} /> */}
-          <MapWithAlgo/>
+          <Map baseUrl={this.props.baseUrl} />
 
           <RoomDetails
             roomNum={this.state.roomNum}
