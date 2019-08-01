@@ -18,7 +18,8 @@ class Game extends React.Component {
       title: "",
       description: "",
       players: [],
-      move: ""
+      move: "",
+      roomNum: null
     };
   }
 
@@ -36,7 +37,7 @@ class Game extends React.Component {
     axios
       .get(endpoint, headers)
       .then(res => {
-        console.log(res.data);
+        console.log("INIT: ", res.data);
         this.setState({
           uuid: res.data.uuid,
           name: res.data.name,
@@ -44,6 +45,22 @@ class Game extends React.Component {
           description: res.data.description,
           players: res.data.players
         });
+        // localStorage.setItem("title", res.data.title);
+        if (res.data.title.includes("Outside")) {
+          this.setState({ roomNum: 1})
+        }
+        else if (res.data.title.includes("Foyer")) {
+          this.setState({ roomNum: 2})
+        }
+        else if (res.data.title.includes("Grand")) {
+          this.setState({ roomNum: 3})
+        }
+        else if (res.data.title.includes("Passage")) {
+          this.setState({ roomNum: 4})
+        }
+        else if (res.data.title.includes("Treasure")) {
+          this.setState({ roomNum: 5})
+        }
       })
       .catch(err => {
         console.log(err);
@@ -115,7 +132,22 @@ class Game extends React.Component {
           players: res.data.players,
           move: ""
         });
-      })
+
+        if (res.data.title.includes("Outside")) {
+          this.setState({ roomNum: 1})
+        }
+        else if (res.data.title.includes("Foyer")) {
+          this.setState({ roomNum: 2})
+        }
+        else if (res.data.title.includes("Grand")) {
+          this.setState({ roomNum: 3})
+        }
+        else if (res.data.title.includes("Passage")) {
+          this.setState({ roomNum: 4})
+        }
+        else if (res.data.title.includes("Treasure")) {
+          this.setState({ roomNum: 5})
+        }      })
       .catch(err => {
         console.log("Whoops! ", err);
       });
@@ -127,9 +159,11 @@ class Game extends React.Component {
         <NavBar name={this.state.name} />
 
         <div className="center-section">
-          <Map />
+          {/* <Map baseUrl={this.props.baseUrl} /> */}
+          <MapWithAlgo/>
 
           <RoomDetails
+            roomNum={this.state.roomNum}
             title={this.state.title}
             description={this.state.description}
             players={this.state.players}

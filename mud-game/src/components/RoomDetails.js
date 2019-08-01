@@ -24,6 +24,7 @@ class RoomDetails extends React.Component {
     return (
       <div className="room-details-container">
         <h3>Room Details:</h3>
+        <p><strong>Room #{this.props.roomNum}</strong></p>
         <p>
           <strong>Title:</strong> {this.props.title}
         </p>
@@ -38,7 +39,7 @@ class RoomDetails extends React.Component {
             <div key={player}>
               {/* <p>{player}</p> */}
               <i
-                class="fas fa-male"
+                className="fas fa-male"
                 onMouseOver={e => this.showName(e, player)}
                 onMouseLeave={this.clearName}
               />
