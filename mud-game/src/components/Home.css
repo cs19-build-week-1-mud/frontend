@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     background-color: black;
+    color: white;
 
 }
 
@@ -17,7 +18,6 @@
     margin: 2% auto 0;
     width: 60%;
     font-size: 18px;
-    color: white;
 }
 
 button {
@@ -40,9 +40,6 @@ button:hover {
   font-size: 50px;
   animation: slideOutRight 9s ease-in-out infinite;
   /* animation: slideOutRight 3s ease-in-out 1s infinite alternate; */
-
-  /* animation: zoomInLeft 5s zoomOutRight 3s 3 alternate; */
-  /* animation-direction: alternate; */
 }
 
 .cars-bottom{
@@ -83,6 +80,4 @@ button:hover {
 .car6 {
   color: red;
   transform: scaleX(-1);
-  /* margin-left: 500px;; */
 }
-/* transform: scale(1.1); */
