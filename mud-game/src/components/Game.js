@@ -4,7 +4,8 @@ import axios from "axios";
 
 // Components
 import NavBar from "./NavBar";
-import Map from "./Map";
+import GameBoard from "./GameBoard";
+//import Map from "./Map";
 import RoomDetails from "./RoomDetails";
 import PlayerInput from "./PlayerInput";
 import "./Game.css";
@@ -19,7 +20,11 @@ class Game extends React.Component {
       description: "",
       players: [],
       move: "",
-      roomNum: null
+      roomNum: null,
+      selectRoom: {
+        active: false,
+        number: 1
+      }
     };
   }
 
@@ -47,25 +52,78 @@ class Game extends React.Component {
         });
         // localStorage.setItem("title", res.data.title);
         if (res.data.title.includes("Outside")) {
-          this.setState({ roomNum: 1})
-        }
-        else if (res.data.title.includes("Foyer")) {
-          this.setState({ roomNum: 2})
-        }
-        else if (res.data.title.includes("Grand")) {
-          this.setState({ roomNum: 3})
-        }
-        else if (res.data.title.includes("Passage")) {
-          this.setState({ roomNum: 4})
-        }
-        else if (res.data.title.includes("Treasure")) {
-          this.setState({ roomNum: 5})
+          this.setState({ roomNum: 1 });
+        } else if (res.data.title.includes("Foyer")) {
+          this.setState({ roomNum: 2 });
+        } else if (res.data.title.includes("Grand")) {
+          this.setState({ roomNum: 3 });
+        } else if (res.data.title.includes("Passage")) {
+          this.setState({ roomNum: 4 });
+        } else if (res.data.title.includes("Treasure")) {
+          this.setState({ roomNum: 5 });
         }
       })
       .catch(err => {
         console.log(err);
       });
   }
+
+  gamePlay = () => {
+    if (this.state.move === "e" && this.state.selectRoom.number < 24) {
+      this.setState({
+        selectRoom: { number: this.state.selectRoom.number + 1, active: true }
+      });
+      console.log(this.state.selectRoom);
+    } else {
+      console.log("STTTTOP!! You're gonna hit the curb!");
+    }
+    if (this.state.move === "s" && this.state.selectRoom.number < 17) {
+      this.setState({
+        selectRoom: { number: this.state.selectRoom.number + 6, active: true }
+      });
+      console.log(this.state.selectRoom);
+    } else {
+      console.log("STTTTOP!! You're gonna hit the curb!");
+    }
+    if (this.state.move === "n" && this.state.selectRoom.number > 6) {
+      this.setState({
+        selectRoom: { number: this.state.selectRoom.number - 6, active: true }
+      });
+      console.log(this.state.selectRoom);
+    } else {
+      console.log("STTTTOP!! You're gonna hit the curb!");
+    }
+    if (this.state.move === "w" && this.state.selectRoom.number > 1) {
+      this.setState({
+        selectRoom: { number: this.state.selectRoom.number - 1, active: true }
+      });
+      console.log(this.state.selectRoom);
+    } else {
+      console.log("STTTTOP!! You're gonna hit the curb!");
+    }
+  };
+
+  // gamePlaySouth = () => {
+  //   if (this.state.move === "s" && this.state.selectRoom.number < 7) {
+  //     this.setState({
+  //       selectRoom: { number: this.state.selectRoom.number + 6, active: true }
+  //     });
+  //     console.log(this.state.selectRoom);
+  //   } else {
+  //     console.log("STTTTOP!! You're gonna hit the curb!");
+  //   }
+  // };
+
+  // gamePlayNorth = () => {
+  //   if (this.state.move === "n" && this.state.selectRoom.number > 6) {
+  //     this.setState({
+  //       selectRoom: { number: this.state.selectRoom.number - 6, active: true }
+  //     });
+  //     console.log(this.state.selectRoom);
+  //   } else {
+  //     console.log("STTTTOP!! You're gonna hit the curb!");
+  //   }
+  // };
 
   // ===========  Player Text Input
   handleChanges = e => {
@@ -89,6 +147,7 @@ class Game extends React.Component {
     // set this.state.move to button id THEN invoke post request
     this.setState({ move: id }, () => {
       this.postDirection();
+      this.gamePlay();
     });
 
     console.log("Move on state: ", this.state.move);
@@ -134,33 +193,36 @@ class Game extends React.Component {
         });
 
         if (res.data.title.includes("Outside")) {
-          this.setState({ roomNum: 1})
+          this.setState({ roomNum: 1 });
+        } else if (res.data.title.includes("Foyer")) {
+          this.setState({ roomNum: 2 });
+        } else if (res.data.title.includes("Grand")) {
+          this.setState({ roomNum: 3 });
+        } else if (res.data.title.includes("Passage")) {
+          this.setState({ roomNum: 4 });
+        } else if (res.data.title.includes("Treasure")) {
+          this.setState({ roomNum: 5 });
         }
-        else if (res.data.title.includes("Foyer")) {
-          this.setState({ roomNum: 2})
-        }
-        else if (res.data.title.includes("Grand")) {
-          this.setState({ roomNum: 3})
-        }
-        else if (res.data.title.includes("Passage")) {
-          this.setState({ roomNum: 4})
-        }
-        else if (res.data.title.includes("Treasure")) {
-          this.setState({ roomNum: 5})
-        }      })
+      })
       .catch(err => {
         console.log("Whoops! ", err);
       });
   };
 
   render() {
+    console.log(this.state.move);
+    console.log(this.state.selectRoom);
     return (
       <div className="game-container">
         <NavBar name={this.state.name} />
 
         <div className="center-section">
-          <Map baseUrl={this.props.baseUrl} />
-
+          {/* <Map baseUrl={this.props.baseUrl} /> */}
+          <GameBoard
+            baseUrl={this.props.baseUrl}
+            move={this.state.move}
+            playerMove={this.playerMove}
+          />
           <RoomDetails
             roomNum={this.state.roomNum}
             title={this.state.title}
