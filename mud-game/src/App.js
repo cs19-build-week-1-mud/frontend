@@ -15,14 +15,10 @@ class App extends React.Component {
     baseUrl: "https://lambda-mud-test.herokuapp.com/api/"
   };
 
-
   render() {
     return (
       <div className="App">
-        <Route 
-          exact path="/" 
-          render={props => <Welcome {...props} />} 
-        />
+        <Route exact path="/" render={props => <Welcome {...props} />} />
         <Route
           path="/register"
           render={props => <Register {...props} baseUrl={this.state.baseUrl} />}

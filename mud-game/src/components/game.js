@@ -5,6 +5,7 @@ import axios from "axios";
 // Components
 import NavBar from "./NavBar";
 import Map from "./Map";
+import GameBoard from "./GameBoard";
 import RoomDetails from "./RoomDetails";
 import PlayerInput from "./PlayerInput";
 import "./Game.css";
@@ -47,19 +48,15 @@ class Game extends React.Component {
         });
         // localStorage.setItem("title", res.data.title);
         if (res.data.title.includes("Outside")) {
-          this.setState({ roomNum: 1})
-        }
-        else if (res.data.title.includes("Foyer")) {
-          this.setState({ roomNum: 2})
-        }
-        else if (res.data.title.includes("Grand")) {
-          this.setState({ roomNum: 3})
-        }
-        else if (res.data.title.includes("Passage")) {
-          this.setState({ roomNum: 4})
-        }
-        else if (res.data.title.includes("Treasure")) {
-          this.setState({ roomNum: 5})
+          this.setState({ roomNum: 1 });
+        } else if (res.data.title.includes("Foyer")) {
+          this.setState({ roomNum: 2 });
+        } else if (res.data.title.includes("Grand")) {
+          this.setState({ roomNum: 3 });
+        } else if (res.data.title.includes("Passage")) {
+          this.setState({ roomNum: 4 });
+        } else if (res.data.title.includes("Treasure")) {
+          this.setState({ roomNum: 5 });
         }
       })
       .catch(err => {
@@ -134,20 +131,17 @@ class Game extends React.Component {
         });
 
         if (res.data.title.includes("Outside")) {
-          this.setState({ roomNum: 1})
+          this.setState({ roomNum: 1 });
+        } else if (res.data.title.includes("Foyer")) {
+          this.setState({ roomNum: 2 });
+        } else if (res.data.title.includes("Grand")) {
+          this.setState({ roomNum: 3 });
+        } else if (res.data.title.includes("Passage")) {
+          this.setState({ roomNum: 4 });
+        } else if (res.data.title.includes("Treasure")) {
+          this.setState({ roomNum: 5 });
         }
-        else if (res.data.title.includes("Foyer")) {
-          this.setState({ roomNum: 2})
-        }
-        else if (res.data.title.includes("Grand")) {
-          this.setState({ roomNum: 3})
-        }
-        else if (res.data.title.includes("Passage")) {
-          this.setState({ roomNum: 4})
-        }
-        else if (res.data.title.includes("Treasure")) {
-          this.setState({ roomNum: 5})
-        }      })
+      })
       .catch(err => {
         console.log("Whoops! ", err);
       });
@@ -160,8 +154,8 @@ class Game extends React.Component {
 
         <div className="center-section">
           {/* <Map baseUrl={this.props.baseUrl} /> */}
-          <MapWithAlgo/>
-
+          {/* <MapWithAlgo/> */}
+          <GameBoard />
           <RoomDetails
             roomNum={this.state.roomNum}
             title={this.state.title}
