@@ -7,6 +7,7 @@ import "./Home.css";
 const Home = props => {
   return (
     <div className="home-container">
+      <div className="dashed-line"></div>
       <div className="home-text">
         <h1>The Parking Lot</h1>
         <p>
@@ -28,7 +29,21 @@ const Home = props => {
             <button>Login</button>
           </Link>
         </div>
+        
       </div>
+      {/* <i className="fas fa-car-side car1"></i> */}
+      <div className="cars-top">
+        <i className="fas fa-car-side car1"></i>
+        <i className="fas fa-car-side car2"></i>
+        <i className="fas fa-car-side car3"></i>
+      </div>
+      <div className="cars-bottom">
+        <i className="fas fa-car-side car4"></i>
+        <i className="fas fa-car-side car5"></i>
+        <i className="fas fa-car-side car6"></i>
+      </div>
+      
+
     </div>
   );
 };

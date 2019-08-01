@@ -3,11 +3,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: black;
+
+}
+
+.dashed-line {
+  width: 100%;
+  margin-top: 5px;
+  border-top: 30px dashed yellow;
+
 }
 
 .auth-content {
   margin: 5% auto 0;
   width: 60%;
+  color: white;
 }
 
 form {
@@ -33,6 +43,8 @@ button {
   font-size: 16px;
   margin: 0 15px;
   box-shadow: 2px 3px 2px lightgray;
+  background-color: yellow;
+
 }
 
 button:hover {

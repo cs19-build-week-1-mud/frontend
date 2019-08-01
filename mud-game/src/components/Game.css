@@ -66,18 +66,18 @@ button:hover {
   flex-wrap: wrap;
 }
 
-i {
+.person {
   font-size: 40px;
   margin: 0 5px;
 }
 
-i:hover {
+.person:hover {
   transform: scale(1.1);
   color: orange;
   cursor: pointer;
 }
 
-i:active {
+.person:active {
   color: pink;
 }
 

@@ -42,6 +42,7 @@ class Login extends React.Component {
   render() {
     return (
       <div className="auth-container">
+        <div className="dashed-line"></div>
         <div className="auth-content">
           <h1>Login</h1>
           <form onSubmit={this.submit}>

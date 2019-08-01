@@ -39,7 +39,7 @@ class RoomDetails extends React.Component {
             <div key={player}>
               {/* <p>{player}</p> */}
               <i
-                className="fas fa-male"
+                className="fas fa-male person"
                 onMouseOver={e => this.showName(e, player)}
                 onMouseLeave={this.clearName}
               />
