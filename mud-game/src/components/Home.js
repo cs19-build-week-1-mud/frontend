@@ -8,31 +8,17 @@ const Home = props => {
   return (
     <div className="home-container">
       <div className="home-text">
-        <h1>Welcome to Red Jaguars MUD</h1>
+        <h1>The Parking Lot</h1>
         <p>
-          Read this cool information about this ever-so-cool game. Lorem ipsum
-          dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-          occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-          mollit anim id est laborum.
+          We've all experienced the daunting task of finding a decent parking space, or better yet, beating the car on the other side of the lot to that space! The selection of good spaces is usually down-sized by many factors such as spaces occupied with trash, shopping carts, people, and we can't forget that one car that's so small you didn't even know it was there!
         </p>
 
         <p>
-          Read this cool information about this ever-so-cool game. Lorem ipsum
-          dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-          occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-          mollit anim id est laborum.
+          In this Parking Lot Multi-User Dungeon Game, you'll have the task of navigating through the parking lot to find your perfect parking space. You'll run into situations where the space isn't ideal and you'll have to keep looking until you find one that is! Don't forget, there are other drivers looking around as well, so move quickly!
         </p>
       </div>
       <div className="home-enter">
-        <h3>Register or Login To Enter</h3>
+        <h3>Register or Login To Play</h3>
         <div className="home-buttons">
           <Link to="/register">
             <button>Register</button>
