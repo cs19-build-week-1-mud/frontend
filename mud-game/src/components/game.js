@@ -4,8 +4,7 @@ import axios from "axios";
 
 // Components
 import NavBar from "./NavBar";
-import MapWithAlgo from "./MapWithAlgo";
-//import Map from "./Map";
+import Map from "./Map";
 import RoomDetails from "./RoomDetails";
 import PlayerInput from "./PlayerInput";
 import "./Game.css";

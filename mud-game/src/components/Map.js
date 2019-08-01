@@ -4,8 +4,6 @@ import axios from "axios";
 
 // Components
 import picture from "../images/smileyRectangle.png";
-import PracticeMapJSX from "./PracticeMapJSX";
-//import MapAlgo from "./MapAlgo";
 
 class Map extends React.Component {
   constructor() {
@@ -47,13 +45,8 @@ class Map extends React.Component {
     return (
       <div className="map-container">
 
-        {/* <MapAlgo rooms={this.state.rooms} /> */}
+        <img src={picture} alt="Smiley face" className="map"/>
 
-        {/* <img src={picture} alt="Smiley face" className="map"/> */}
-
-        <div className="map">
-          {PracticeMapJSX}
-        </div>
         
       </div>
     );
