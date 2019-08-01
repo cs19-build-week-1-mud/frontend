@@ -46,6 +46,7 @@ class Register extends React.Component {
   render() {
     return (
       <div className="auth-container">
+        <div className="dashed-line"></div>
         <div className="auth-content">
         <h1>Register</h1>
         <form onSubmit={this.submit}>

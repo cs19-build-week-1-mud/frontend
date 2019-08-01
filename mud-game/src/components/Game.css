@@ -21,7 +21,7 @@ button:hover {
 .navbar-container {
   width: auto;
   height: 40 px;
-  background: navy;
+  background: black;
   color: white;
   display: flex;
   flex-direction: row;
@@ -30,6 +30,7 @@ button:hover {
   padding: 0 20px;
   font-size: 20px;
 }
+
 .navbar-container button {
   height: 30px;
   width: 80px;
@@ -66,18 +67,18 @@ button:hover {
   flex-wrap: wrap;
 }
 
-i {
+.person {
   font-size: 40px;
   margin: 0 5px;
 }
 
-i:hover {
+.person:hover {
   transform: scale(1.1);
-  color: orange;
+  color: yellow;
   cursor: pointer;
 }
 
-i:active {
+.person:active {
   color: pink;
 }
 
@@ -88,7 +89,7 @@ i:active {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: baseline;
+  align-items: flex-start;
 }
 
 /* Direction Buttons */
@@ -111,7 +112,7 @@ i:active {
 
 .direction-buttons button:hover {
   transform: scale(1.1);
-  color: orange;
+  color: yellow;
   cursor: pointer;
 }
 
@@ -130,7 +131,7 @@ i:active {
 
 .player-input-form input {
   width: 70%;
-  height: 30px;
+  height: 36px;
   padding-left: 10px;
   font-size: 18px;
   border-radius: 5px;
@@ -142,12 +143,16 @@ input:focus {
   outline: none;
 }
 
-form button {
-  height: 33px;
+.player-input-form button {
+  height: 40px;
   width: 80px;
   font-size: 14px;
+  font-weight: 700;
+  background-color: black;
+  color: white;
 }
 
-form button:hover {
+.player-input-form button:hover {
   transform: scale(1.1);
+  color: yellow;
 }
